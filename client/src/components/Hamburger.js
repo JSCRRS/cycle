@@ -1,15 +1,9 @@
-export default function Hamburger() {
-    function onHamburgerClick() {
-        console.log("KLICK!");
-    }
-
+export default function Hamburger({ onClick }) {
     return (
-        <nav>
-            <div id="hamburger-menu" onClick={onHamburgerClick}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
+        <div id="hamburger-menu" onClick={onClick}>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     );
 }

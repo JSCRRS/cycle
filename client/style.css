@@ -45,3 +45,17 @@ footer {
     margin-bottom: 5px;
     background: black;
 }
+
+.hamburger-options {
+    display: flex;
+    justify-content: space-around;
+    /*     transition: 0.5s ease-in-out;
+ */
+    /*height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    transition: transform 0.2s ease-in-out;
+    z-index: 1; */
+}
