@@ -30,6 +30,12 @@ footer {
     width: 100%;
 }
 
+.page-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* ----- NAVIGAGION ------ */
 
 /* HAMBURGER MENU */
@@ -59,3 +65,12 @@ footer {
     transition: transform 0.2s ease-in-out;
     z-index: 1; */
 }
+
+/* ----- TIMER ------ */
+
+.timer {
+    width: 250px;
+    height: 250px;
+}
+
+/* TIMER BUTTON */

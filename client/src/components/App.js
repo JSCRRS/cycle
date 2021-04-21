@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import Hamburger from "./Hamburger";
 import Options from "./Options";
+import Timer from "./Timer";
+import TimerButton from "./TimerButton";
 
 export default function App() {
     const [optionBar, setOptionBar] = useState(false);
@@ -16,8 +18,6 @@ export default function App() {
         }
     }
 
-    const testText = "hier steht was";
-
     return (
         <div>
             <header>
@@ -26,7 +26,12 @@ export default function App() {
             </header>
             <div>{renderOptionBar()}</div>
 
-            <div>{testText}</div>
+            <div className="page-center">
+                <div className="timer">
+                    <Timer />
+                </div>
+                <TimerButton />
+            </div>
 
             <footer>2021</footer>
         </div>
