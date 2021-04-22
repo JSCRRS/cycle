@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import useCountDown from "react-countdown-hook";
+
 import Hamburger from "./Hamburger";
 import Options from "./Options";
 import Timer from "./Timer";
@@ -7,6 +9,7 @@ import TimerButton from "./TimerButton";
 
 export default function App() {
     const [optionBar, setOptionBar] = useState(false);
+    const [actions] = useCountDown();
 
     function onHamburgerClick() {
         optionBar ? setOptionBar(false) : setOptionBar(true);
@@ -20,6 +23,8 @@ export default function App() {
 
     function onFinish() {
         console.log("done");
+        /*         actions.reset();
+         */
     }
 
     return (
@@ -32,9 +37,8 @@ export default function App() {
 
             <div className="page-center">
                 <div className="timer">
-                    <Timer totalTime={5 * 1000} onFinish={onFinish} />
+                    <Timer totalTime={15 * 1000} onFinish={onFinish} />
                 </div>
-                <TimerButton />
             </div>
 
             <footer>2021</footer>
