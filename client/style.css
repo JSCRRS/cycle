@@ -8,6 +8,13 @@ body {
     font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -25,8 +32,6 @@ footer {
     display: flex;
     justify-content: center;
     padding: 50px;
-    position: fixed;
-    bottom: 0;
     width: 100%;
 }
 
@@ -34,6 +39,8 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 1;
+    justify-content: center;
 }
 
 /* ----- NAVIGAGION ------ */

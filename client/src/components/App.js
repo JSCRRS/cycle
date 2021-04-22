@@ -18,22 +18,26 @@ export default function App() {
         }
     }
 
+    function onFinish() {
+        console.log("done");
+    }
+
     return (
-        <div>
+        <>
             <header>
                 <h1>Cycle</h1>
                 <Hamburger onClick={onHamburgerClick} />
             </header>
-            <div>{renderOptionBar()}</div>
+            {renderOptionBar()}
 
             <div className="page-center">
                 <div className="timer">
-                    <Timer />
+                    <Timer totalTime={5 * 1000} onFinish={onFinish} />
                 </div>
                 <TimerButton />
             </div>
 
             <footer>2021</footer>
-        </div>
+        </>
     );
 }
