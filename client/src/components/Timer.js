@@ -3,11 +3,10 @@ import useCountDown from "react-countdown-hook";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import TimerButton from "./TimerButton";
-
 export default function Timer({ totalTime, onFinish }) {
     const [timeLeft, actions] = useCountDown(totalTime, 1000);
 
+    const [buttonText, setButtonText] = useState("START");
     const [started, setStarted] = useState(false);
     const [running, setRunning] = useState(false);
 
@@ -18,6 +17,17 @@ export default function Timer({ totalTime, onFinish }) {
             onFinish();
         }
     }, [timeLeft]);
+
+    useEffect(() => {
+        if (!started || !running) {
+            setButtonText("START");
+            return;
+        }
+        if (running) {
+            setButtonText("PAUSE");
+            return;
+        }
+    }, [started, running]);
 
     function onClick() {
         if (running) {
@@ -36,8 +46,7 @@ export default function Timer({ totalTime, onFinish }) {
             actions.resume();
             return;
         }
-        console.log("here");
-        actions.reset();
+        setRunning(true);
         actions.start();
     }
 
@@ -61,7 +70,9 @@ export default function Timer({ totalTime, onFinish }) {
                     },
                 }}
             />
-            <button onClick={onClick}>Klick</button>
+            <button className="timer-button" onClick={onClick}>
+                {buttonText}
+            </button>
         </>
     );
 }
