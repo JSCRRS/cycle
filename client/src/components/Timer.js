@@ -5,13 +5,15 @@ import "react-circular-progressbar/dist/styles.css";
 
 export default function Timer({ totalTime, onFinish }) {
     const [timeLeft, actions] = useCountDown(totalTime, 1000);
+    //console.log("[Timer] totalTime:", totalTime);
+    console.log("[Timer] timeLeft:", timeLeft);
 
     const [buttonText, setButtonText] = useState("START");
     const [started, setStarted] = useState(false);
     const [running, setRunning] = useState(false);
 
     useEffect(() => {
-        console.log(timeLeft);
+        //console.log("verbleibende Zeit:", timeLeft);
         if (timeLeft <= 0 && started) {
             setRunning(false);
             onFinish();
@@ -51,6 +53,7 @@ export default function Timer({ totalTime, onFinish }) {
     }
 
     const percentage = started ? ((totalTime - timeLeft) / totalTime) * 100 : 0;
+
     return (
         <>
             <CircularProgressbar
