@@ -74,7 +74,7 @@ footer {
     transition: transform 0.3s ease-in-out;
 }
 
-/* OPTIONS */
+/* ----- OPTIONS ------ */
 
 .hamburger-options {
     display: flex;
@@ -90,6 +90,20 @@ footer {
 
 .nav-open nav {
     transform: translateX(0);
+}
+
+/* OPTION-BUTTONS */
+
+.duration {
+    display: flex;
+    justify-content: space-between;
+}
+
+.duration button {
+    outline: solid 1px #000;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 /* ----- TIMER ------ */
