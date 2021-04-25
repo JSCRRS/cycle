@@ -49,7 +49,7 @@ export default function Timer({ totalTime, onFinish }) {
             return;
         }
         setRunning(true);
-        actions.start();
+        actions.start(totalTime);
     }
 
     const percentage = started ? ((totalTime - timeLeft) / totalTime) * 100 : 0;

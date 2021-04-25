@@ -6,6 +6,8 @@ export default function App() {
     //Das soll unten bei totalTime={time}
     const defaultTime = 5 * 1000;
     const smallTime = 3 * 1000;
+    const mediumTime = 6 * 1000;
+    const largeTime = 10 * 1000;
     const [time, setTime] = useState(defaultTime);
 
     function clickHandler() {
@@ -18,6 +20,14 @@ export default function App() {
 
     function onTimeSetupSmall() {
         setTime(smallTime);
+    }
+
+    function onTimeSetupMedium() {
+        setTime(mediumTime);
+    }
+
+    function onTimeSetupLarge() {
+        setTime(largeTime);
     }
 
     console.log("ganz unten ist die Zeit:", time);
@@ -34,8 +44,8 @@ export default function App() {
                         <p>How long per Cycle?</p>
                         <div className="duration">
                             <button onClick={onTimeSetupSmall}>3s</button>
-                            <button>6s</button>
-                            <button>10s</button>
+                            <button onClick={onTimeSetupMedium}>6s</button>
+                            <button onClick={onTimeSetupLarge}>10s</button>
                         </div>
                     </div>
                 </nav>
