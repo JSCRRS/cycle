@@ -1,7 +1,5 @@
 import { useState } from "react";
-
 import useSound from "use-sound";
-import bellSfx from "../sounds/bell.mp3";
 
 import Hamburger from "./Hamburger";
 import Timer from "./Timer";
@@ -13,7 +11,7 @@ export default function App() {
     const largeTime = 10 * 1000;
     const [time, setTime] = useState(smallTime);
 
-    const [play] = useSound(bellSfx);
+    const [play] = useSound("/bell.mp3", { volume: 0.1 });
 
     function clickHandler() {
         document.body.classList.toggle("nav-open");
