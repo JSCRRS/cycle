@@ -1,14 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+import useSound from "use-sound";
+import bellSfx from "../sounds/bell.mp3";
+
 import Hamburger from "./Hamburger";
 import Timer from "./Timer";
+import Use from "./Use";
 
 export default function App() {
-    //Das soll unten bei totalTime={time}
-    const defaultTime = 5 * 1000;
     const smallTime = 3 * 1000;
     const mediumTime = 6 * 1000;
     const largeTime = 10 * 1000;
-    const [time, setTime] = useState(defaultTime);
+    const [time, setTime] = useState(smallTime);
+
+    const [play] = useSound(bellSfx);
 
     function clickHandler() {
         document.body.classList.toggle("nav-open");
@@ -16,6 +21,7 @@ export default function App() {
 
     function onFinish() {
         console.log("done");
+        play();
     }
 
     function onTimeSetupSmall() {
@@ -30,8 +36,6 @@ export default function App() {
         setTime(largeTime);
     }
 
-    console.log("ganz unten ist die Zeit:", time);
-
     return (
         <>
             <header>
@@ -39,9 +43,10 @@ export default function App() {
                 <Hamburger onClick={clickHandler} />
             </header>
             <div className="page-center">
-                <nav className="hamburger-options">
+                <nav className="hamburger-options visible-small">
+                    <Use />
                     <div className="cycle-time">
-                        <p>How long per Cycle?</p>
+                        <h4>How long per Cycle?</h4>
                         <div className="duration">
                             <button onClick={onTimeSetupSmall}>3s</button>
                             <button onClick={onTimeSetupMedium}>6s</button>
@@ -50,7 +55,6 @@ export default function App() {
                     </div>
                 </nav>
                 <div className="timer">
-                    {console.log("im jsx:", time)}
                     <Timer totalTime={time} onFinish={onFinish} />
                 </div>
             </div>

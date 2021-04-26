@@ -57,6 +57,8 @@ footer {
     height: 3px;
     margin-bottom: 5px;
     background: black;
+    transition: 0.3s ease-in-out;
+    transform: none;
 }
 
 .nav-open #hamburger-menu span:nth-of-type(1) {
@@ -72,6 +74,13 @@ footer {
 .nav-open #hamburger-menu span:nth-of-type(3) {
     transform: rotate(45deg);
     transition: transform 0.3s ease-in-out;
+}
+
+/* USE */
+
+.text {
+    max-width: 127px;
+    font-size: 13.5px;
 }
 
 /* ----- OPTIONS ------ */
@@ -104,6 +113,12 @@ footer {
     border: none;
     background-color: transparent;
     cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+}
+
+.duration button:active {
+    background-color: black;
+    color: white;
 }
 
 /* ----- TIMER ------ */
@@ -131,4 +146,15 @@ footer {
     outline: solid 2px #000;
     border: none;
     background-color: transparent;
+}
+
+/* ----- MEDIA QUERIES ------ */
+
+@media screen and (max-width: 767px) {
+    .visible-small {
+        align-items: center;
+        background-color: white;
+        width: 100%;
+        padding-bottom: 100px;
+    }
 }
