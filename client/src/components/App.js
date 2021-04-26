@@ -11,7 +11,7 @@ export default function App() {
     const largeTime = 10 * 1000;
     const [time, setTime] = useState(smallTime);
 
-    const [play] = useSound("/bell.mp3", { volume: 0.1 });
+    const [play] = useSound("/bell.mp3", { volume: 0.25 });
 
     function clickHandler() {
         document.body.classList.toggle("nav-open");
