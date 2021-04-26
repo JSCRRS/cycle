@@ -1,39 +1,61 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import Hamburger from "./Hamburger";
-import Options from "./Options";
 import Timer from "./Timer";
-import TimerButton from "./TimerButton";
 
 export default function App() {
-    const [optionBar, setOptionBar] = useState(false);
+    //Das soll unten bei totalTime={time}
+    const defaultTime = 5 * 1000;
+    const smallTime = 3 * 1000;
+    const mediumTime = 6 * 1000;
+    const largeTime = 10 * 1000;
+    const [time, setTime] = useState(defaultTime);
 
-    function onHamburgerClick() {
-        optionBar ? setOptionBar(false) : setOptionBar(true);
+    function clickHandler() {
+        document.body.classList.toggle("nav-open");
     }
 
-    function renderOptionBar() {
-        if (optionBar) {
-            return <Options />;
-        }
+    function onFinish() {
+        console.log("done");
     }
+
+    function onTimeSetupSmall() {
+        setTime(smallTime);
+    }
+
+    function onTimeSetupMedium() {
+        setTime(mediumTime);
+    }
+
+    function onTimeSetupLarge() {
+        setTime(largeTime);
+    }
+
+    console.log("ganz unten ist die Zeit:", time);
 
     return (
-        <div>
+        <>
             <header>
                 <h1>Cycle</h1>
-                <Hamburger onClick={onHamburgerClick} />
+                <Hamburger onClick={clickHandler} />
             </header>
-            <div>{renderOptionBar()}</div>
-
             <div className="page-center">
+                <nav className="hamburger-options">
+                    <div className="cycle-time">
+                        <p>How long per Cycle?</p>
+                        <div className="duration">
+                            <button onClick={onTimeSetupSmall}>3s</button>
+                            <button onClick={onTimeSetupMedium}>6s</button>
+                            <button onClick={onTimeSetupLarge}>10s</button>
+                        </div>
+                    </div>
+                </nav>
                 <div className="timer">
-                    <Timer />
+                    {console.log("im jsx:", time)}
+                    <Timer totalTime={time} onFinish={onFinish} />
                 </div>
-                <TimerButton />
             </div>
 
             <footer>2021</footer>
-        </div>
+        </>
     );
 }
