@@ -5,12 +5,11 @@ import Hamburger from "./Hamburger";
 import Timer from "./Timer";
 import Use from "./Use";
 
-export default function App() {
-    const smallTime = 3 * 1000;
-    const mediumTime = 6 * 1000;
-    const largeTime = 10 * 1000;
-    const [time, setTime] = useState(smallTime);
+const times = [3, 6, 10];
+const defaultTime = 5;
 
+export default function App() {
+    const [time, setTime] = useState(defaultTime);
     const [play] = useSound("/bell.mp3", { volume: 0.25 });
 
     function clickHandler() {
@@ -18,25 +17,12 @@ export default function App() {
     }
 
     function onFinish() {
-        console.log("done");
         play();
-    }
-
-    function onTimeSetupSmall() {
-        setTime(smallTime);
-    }
-
-    function onTimeSetupMedium() {
-        setTime(mediumTime);
-    }
-
-    function onTimeSetupLarge() {
-        setTime(largeTime);
     }
 
     return (
         <>
-            <header>
+            <header className="header-small">
                 <h1>Cycle</h1>
                 <Hamburger onClick={clickHandler} />
             </header>
@@ -46,14 +32,20 @@ export default function App() {
                     <div className="cycle-time">
                         <h4>How long per Cycle?</h4>
                         <div className="duration">
-                            <button onClick={onTimeSetupSmall}>3s</button>
-                            <button onClick={onTimeSetupMedium}>6s</button>
-                            <button onClick={onTimeSetupLarge}>10s</button>
+                            {times.map((t) => (
+                                <button
+                                    key={t}
+                                    className={time === t ? "active" : null}
+                                    onClick={() => setTime(t)}
+                                >
+                                    {t}s
+                                </button>
+                            ))}
                         </div>
                     </div>
                 </nav>
                 <div className="timer">
-                    <Timer totalTime={time} onFinish={onFinish} />
+                    <Timer totalTime={time * 1000} onFinish={onFinish} />
                 </div>
             </div>
 

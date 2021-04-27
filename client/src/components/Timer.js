@@ -49,6 +49,9 @@ export default function Timer({ totalTime, onFinish }) {
         actions.start(totalTime);
     }
 
+    /*  const counter = (totalTime - timeLeft) / 1000;
+    console.log("[Timer] aufwärts zählen", counter); */
+
     const percentage = started
         ? Math.floor(((totalTime - timeLeft) / totalTime) * 100)
         : 0;
